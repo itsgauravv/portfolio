@@ -155,7 +155,7 @@ const Home = () => {
             >
               <div className="flex flex-col items-center gap-4">
                 <h2 className="text-5xl font-bold text-[#006FEE]">{title}</h2>
-                <p className="italic">{description}</p>
+                <p className="w-5/6 sm:w-2/3 italic">{description}</p>
               </div>
               <div className="w-5/6 sm:w-2/3">{component}</div>
             </motion.section>
