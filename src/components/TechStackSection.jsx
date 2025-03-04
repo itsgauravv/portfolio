@@ -2,7 +2,7 @@ import React from "react";
 
 const TechStackSection = () => {
   return (
-    <div className="grid grid-cols-3 gap-x-28 sm:grid-cols-5 sm:gap-x-40 gap-y-10">
+    <div className="grid grid-cols-3 gap-x-24 sm:grid-cols-5 sm:gap-x-40 gap-y-10">
       <img
         height={60}
         width={60}
