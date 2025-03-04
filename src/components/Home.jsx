@@ -86,7 +86,7 @@ const Home = () => {
             variants={fadeInVariant}
             className="h-screen w-full flex flex-col items-center justify-center gap-10 text-center"
           >
-            <h1 className="text-5xl font-bold">
+            <h1 className="text-5xl !w-2/3 font-bold">
               Hey, I'm{" "}
               <span className="text-[#006FEE] inline-flex">
                 <Typewriter
@@ -157,7 +157,7 @@ const Home = () => {
                 <h2 className="text-5xl font-bold text-[#006FEE]">{title}</h2>
                 <p className="italic">{description}</p>
               </div>
-              {component}
+              <div className="w-5/6 sm:w-2/3">{component}</div>
             </motion.section>
           ))}
         </>

@@ -3,7 +3,7 @@ import ProjectCard from "./ProjectCard";
 
 const ProjectSection = () => {
   return (
-    <div className="w-2/3 grid grid-cols-1 text-left sm:grid-cols-3 gap-10">
+    <div className="grid grid-cols-1 text-left sm:grid-cols-3 gap-10">
       <ProjectCard
         img="/collaborative-live-docs.png"
         title="Collaborative Live Docs"

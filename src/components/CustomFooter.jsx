@@ -4,7 +4,7 @@ import React from "react";
 const CustomFooter = () => {
   return (
     <div className="flex flex-col w-full items-center gap-10 py-10">
-      <div className="w-2/3 flex justify-between items-center">
+      <div className="w-5/6 sm:w-2/3 flex justify-between items-center">
         <p className="text-blue-400 font-semibold text-lg">Grav</p>
         <div className="flex flex-col sm:flex-row gap-1 sm:gap-4">
           <Link
@@ -21,10 +21,10 @@ const CustomFooter = () => {
           </Link>
         </div>
       </div>
-      <div className="w-2/3 border-t-2"></div>
-      <div className="w-2/3 flex flex-col items-center gap-2">
-        <p>Designed and Developed by Gaurav Jani</p>
-        <p>All rights reserved. Copyright © 2025</p>
+      <div className="w-5/6 sm:w-2/3 border-t-2"></div>
+      <div className="w-5/6 sm:w-2/3 flex flex-col items-center gap-2">
+        <p className="text-center">Designed and Developed by Gaurav Jani</p>
+        <p className="text-center">All rights reserved. Copyright © 2025</p>
       </div>
     </div>
   );
