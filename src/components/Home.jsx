@@ -1,6 +1,6 @@
 import { Button } from "@heroui/button";
 import { Link } from "@heroui/link";
-import { FaGithub, FaMedium, FaLinkedin } from "react-icons/fa";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import React, { useState, useEffect } from "react";
 import Typewriter from "typewriter-effect";
