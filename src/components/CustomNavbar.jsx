@@ -50,7 +50,7 @@ export default function CustomNavbar() {
   ];
 
   return (
-    <Navbar onMenuOpenChange={setIsMenuOpen}>
+    <Navbar isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen}>
       <NavbarContent>
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
@@ -84,6 +84,7 @@ export default function CustomNavbar() {
               color="foreground"
               href={item.href}
               size="lg"
+              onClick={() => setIsMenuOpen(false)}
             >
               {item.title}
             </Link>
