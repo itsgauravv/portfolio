@@ -99,15 +99,15 @@ const Home = () => {
 
             <h1 className="text-5xl !w-2/3 font-bold">
               Hey, I'm{" "}
-              <span className="text-[#006FEE] inline-flex">
+              <span className="text-[#006FEE] sm:inline-flex">
                 <Typewriter
                   options={{
                     strings: [
                       "Gaurav Jani",
-                      "Destroying bugs... sometimes",
-                      "Writing code that works... eventually",
-                      "Debugging my debugging",
-                      "Making websites, not miracles",
+                      "Frontend Dev",
+                      "Destroying bugs",
+                      "Still debugging",
+                      "Coffee-powered",
                     ],
                     autoStart: true,
                     loop: true,
