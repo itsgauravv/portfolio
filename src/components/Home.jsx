@@ -86,6 +86,17 @@ const Home = () => {
             variants={fadeInVariant}
             className="h-screen w-full flex flex-col items-center justify-center gap-10 text-center"
           >
+            {/* Profile Picture */}
+            <div className="w-40 h-40 rounded-full overflow-hidden shadow-lg">
+              <img
+                src="/pfp.png"
+                alt="Gaurav Jani"
+                width={160}
+                height={160}
+                className="object-cover"
+              />
+            </div>
+
             <h1 className="text-5xl !w-2/3 font-bold">
               Hey, I'm{" "}
               <span className="text-[#006FEE] inline-flex">
