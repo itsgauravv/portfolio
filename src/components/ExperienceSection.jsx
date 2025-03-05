@@ -9,13 +9,13 @@ export default function ExperienceSection() {
     "As a Front-End Developer at NinjaTech, I worked on improving efficiency and user experience across the platform. I developed a Chrome Extension that provided instant access to Meta Ads data, making workflows faster and more seamless. I also automated a key module using OpenAI, which sped up processing and allowed the customer service team to assist more users. Additionally, I focused on performance optimization by fixing critical bugs, ensuring the application ran smoother and loaded faster.";
 
   return (
-    <Accordion selectionMode="multiple">
+    <Accordion selectionMode="multiple" defaultExpandedKeys={["1"]}>
       <AccordionItem
         className="text-left py-5"
         key="1"
         aria-label="Frontend Developer"
         startContent={
-          <Avatar isBordered color="default" radius="lg" src="/company.jpeg" />
+          <Avatar isBordered color="primary" radius="lg" src="/company.jpeg" />
         }
         subtitle="May 2024 - Present"
         title={<p className="font-semibold">Frontend Developer</p>}
