@@ -97,7 +97,7 @@ const Home = () => {
               />
             </div>
 
-            <h1 className="text-5xl !w-2/3 font-bold">
+            <h1 className="text-5xl text-center font-bold">
               Hey, I'm{" "}
               <span className="text-[#006FEE] sm:inline-flex">
                 <Typewriter
