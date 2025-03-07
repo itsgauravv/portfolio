@@ -2,7 +2,9 @@ const express = require("express");
 const { google } = require("googleapis");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const dotenv = require("dotenv");
 
+dotenv.config();
 const app = express();
 app.use(
   cors({
@@ -15,10 +17,10 @@ app.options("*", cors());
 
 app.use(bodyParser.json());
 
-const SPREADSHEET_ID = "1sNuDhdfXBVYg2aogQyXK3j6TsvmYvtvEQtkkoMcruI4"; // Replace with your actual Sheet ID
+const SPREADSHEET_ID = process.env.SPREADSHEET_ID;
 
 const auth = new google.auth.GoogleAuth({
-  keyFile: "./google-service-account.json", // Ensure this path is correct
+  credentials: JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT),
   scopes: ["https://www.googleapis.com/auth/spreadsheets"],
 });
 
