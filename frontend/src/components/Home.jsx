@@ -142,15 +142,13 @@ const Home = () => {
               </a>
             </div>
 
-            <Link
-              href="https://drive.google.com/file/d/1l61kVYdgl0A9idxtqJiSn4KVVU2YDJsE/view?usp=sharing"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Button
+              onPress={() => window.open("/Gaurav_Jani_Resume.pdf")}
+              color="primary"
+              variant="shadow"
             >
-              <Button color="primary" variant="shadow">
-                Download CV
-              </Button>
-            </Link>
+              Download CV
+            </Button>
           </motion.div>
 
           {/* Dynamic Sections */}
