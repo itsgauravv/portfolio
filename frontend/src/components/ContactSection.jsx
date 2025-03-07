@@ -51,15 +51,38 @@ const ContactSection = () => {
       });
     }
 
-    addToast({
-      title: "Mail sent successfully!",
-      color: "success",
-    });
-
-    // Reset form after successful submission
-    setName("");
-    setEmail("");
-    setDescription("");
+    // Send form data to backend
+    fetch("http://localhost:5001/submit-form", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name, email, description }),
+      mode: "cors",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.message) {
+          addToast({ title: "Form submitted successfully!", color: "success" });
+          setName("");
+          setEmail("");
+          setDescription("");
+        } else {
+          addToast({
+            title: "Submission failed!",
+            description: data.error,
+            color: "danger",
+          });
+        }
+      })
+      .catch((err) => {
+        console.error("Error:", err);
+        addToast({
+          title: "Error!",
+          description: "Something went wrong.",
+          color: "danger",
+        });
+      });
   }
 
   return (
