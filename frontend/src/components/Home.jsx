@@ -143,7 +143,7 @@ const Home = () => {
             </div>
 
             <Link
-              href="/Gaurav_Jani_Resume.pdf"
+              href="https://drive.google.com/file/d/1l61kVYdgl0A9idxtqJiSn4KVVU2YDJsE/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
             >
