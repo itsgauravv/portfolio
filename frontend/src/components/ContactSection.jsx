@@ -52,7 +52,7 @@ const ContactSection = () => {
     }
 
     // Send form data to backend
-    fetch("http://localhost:5001/submit-form", {
+    fetch("https://portfolio-qbm1.onrender.com/submit-form", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
