@@ -20,7 +20,7 @@ app.use(bodyParser.json());
 const SPREADSHEET_ID = process.env.SPREADSHEET_ID;
 
 const auth = new google.auth.GoogleAuth({
-  credentials: JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT),
+  credentials: JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_KEY),
   scopes: ["https://www.googleapis.com/auth/spreadsheets"],
 });
 
