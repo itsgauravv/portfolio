@@ -3,7 +3,7 @@
 Welcome to the source code of my personal portfolio. This repository contains the codebase for my website, where I showcase my experience, projects, and skills as a developer.
 
 ## 🚀 Live Demo
-[Visit Portfolio](https://your-live-portfolio-link.com)
+[Visit Portfolio](https://gauravjani.vercel.app)
 
 ## 📖 About Me
 I’m Gaurav Jani, a front-end developer passionate about building scalable and high-performance web applications. With experience in modern JavaScript frameworks, I craft elegant and user-friendly digital experiences.
