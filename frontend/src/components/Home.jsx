@@ -143,7 +143,7 @@ const Home = () => {
             </div>
 
             <Button
-              onPress={() => window.open("/Gaurav_Jani_Resume.pdf")}
+              onPress={() => window.open("/GauravJ_Resume.pdf")}
               color="primary"
               variant="shadow"
             >
