@@ -1,14 +1,26 @@
+import React from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import CustomNavbar from "./components/CustomNavbar";
-import "./index.css";
 import Home from "./components/Home";
+import TechStackSection from "./components/TechStackSection";
+import ExperienceSection from "./components/ExperienceSection";
+import ProjectSection from "./components/ProjectSection";
+import ContactSection from "./components/ContactSection";
 import CustomFooter from "./components/CustomFooter";
+import "./index.css";
 
 function App() {
   return (
-    <div>
+    <div className="min-h-screen bg-black text-white overflow-x-hidden">
       <CustomNavbar />
-      <Home />
-      <CustomFooter />
+      <main className="relative">
+        <Home />
+        <TechStackSection />
+        <ExperienceSection />
+        <ProjectSection />
+        <ContactSection />
+        <CustomFooter />
+      </main>
     </div>
   );
 }
