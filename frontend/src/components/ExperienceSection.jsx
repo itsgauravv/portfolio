@@ -1,13 +1,10 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import {
-  FaBriefcase,
-  FaCalendar,
-  FaMapMarkerAlt,
-  FaExternalLinkAlt,
-} from "react-icons/fa";
+import { FaCalendar, FaMapMarkerAlt } from "react-icons/fa";
 
 export default function ExperienceSection() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const itemRefs = useRef([]);
   const experiences = [
     {
       id: 1,
@@ -80,6 +77,47 @@ export default function ExperienceSection() {
     },
   };
 
+  // Track active card by proximity to viewport center to avoid IO flicker
+  useEffect(() => {
+    let ticking = false;
+
+    const computeActive = () => {
+      const centerY = window.innerHeight / 2;
+      let closestIndex = 0;
+      let closestDistance = Number.POSITIVE_INFINITY;
+
+      itemRefs.current.forEach((el, idx) => {
+        if (!el) return;
+        const rect = el.getBoundingClientRect();
+        const elementCenter = rect.top + rect.height / 2;
+        const distance = Math.abs(elementCenter - centerY);
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestIndex = idx;
+        }
+      });
+
+      setActiveIndex((prev) => (prev !== closestIndex ? closestIndex : prev));
+      ticking = false;
+    };
+
+    const onScrollOrResize = () => {
+      if (!ticking) {
+        ticking = true;
+        window.requestAnimationFrame(computeActive);
+      }
+    };
+
+    window.addEventListener("scroll", onScrollOrResize, { passive: true });
+    window.addEventListener("resize", onScrollOrResize);
+    computeActive();
+
+    return () => {
+      window.removeEventListener("scroll", onScrollOrResize);
+      window.removeEventListener("resize", onScrollOrResize);
+    };
+  }, []);
+
   return (
     <section id="experience" className="py-20">
       <div className="container">
@@ -95,7 +133,7 @@ export default function ExperienceSection() {
             <span className="gradient-text">Experience</span>
           </h2>
           <p className="text-xl text-white/60 max-w-2xl mx-auto">
-            My professional journey and the impact I've made along the way
+            My professional journey and the impact I&apos;ve made along the way
           </p>
         </motion.div>
 
@@ -108,30 +146,82 @@ export default function ExperienceSection() {
           viewport={{ once: true }}
         >
           {/* Timeline Line */}
-          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-white/20 transform md:-translate-x-1/2" />
+          <div className="absolute left-6 md:left-10 top-0 bottom-0 w-[3px] md:w-1 bg-gradient-to-b from-white/10 via-white/40 to-white/10 rounded-full">
+            <div className="hidden md:block absolute inset-0 blur-xl bg-white/10" />
+          </div>
 
           {experiences.map((experience, index) => (
             <motion.div
               key={experience.id}
-              className={`relative mb-12 ${
+              data-index={index}
+              ref={(el) => {
+                itemRefs.current[index] = el;
+              }}
+              className={`relative mb-16 ${
                 index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
               }`}
               variants={itemVariants}
             >
-              <div className="flex md:flex-row flex-col items-start gap-8">
-                {/* Timeline Dot */}
-                <div className="relative z-10">
-                  <motion.div
-                    className="w-4 h-4 bg-white rounded-full border-4 border-black"
-                    whileHover={{ scale: 1.2 }}
-                    transition={{ duration: 0.2 }}
-                  />
+              {/* Timeline Node + Connector */}
+              <div className="pointer-events-none">
+                {/* Node */}
+                <div className="absolute left-6 md:left-10 -translate-x-1/2 top-8 z-10">
+                  <div className="relative">
+                    <span
+                      className={`absolute inset-0 rounded-full blur-md transition-opacity duration-300 ${
+                        index === activeIndex ? "bg-white/40" : "bg-white/20"
+                      }`}
+                    />
+                    <motion.span
+                      className="absolute -inset-3 rounded-full bg-white/10"
+                      animate={{
+                        opacity:
+                          index === activeIndex
+                            ? [0.4, 0.9, 0.4]
+                            : [0.2, 0.6, 0.2],
+                        scale:
+                          index === activeIndex ? [1, 1.2, 1] : [1, 1.1, 1],
+                      }}
+                      transition={{ duration: 2.2, repeat: Infinity }}
+                    />
+                    <div
+                      className={`relative w-5 h-5 rounded-full shadow-lg transition-transform duration-300 ${
+                        index === activeIndex
+                          ? "bg-white scale-110"
+                          : "bg-white"
+                      }`}
+                    >
+                      <span
+                        className={`absolute inset-0 rounded-full ${
+                          index === activeIndex
+                            ? "animate-ping bg-white/60"
+                            : "animate-ping bg-white/30"
+                        }`}
+                      />
+                      <span
+                        className={`absolute inset-1 rounded-full ${
+                          index === activeIndex ? "bg-white" : "bg-black"
+                        }`}
+                      />
+                    </div>
+                  </div>
                 </div>
+                {/* Connector stub */}
+                <div
+                  className={`hidden md:block absolute top-9 left-10 h-0.5 w-24 transition-colors duration-300 ${
+                    index === activeIndex ? "bg-white/50" : "bg-white/20"
+                  }`}
+                />
+              </div>
 
+              {/* Content */}
+              <div className="flex flex-col items-center gap-8">
                 {/* Content Card */}
                 <motion.div
-                  className={`flex-1 glass rounded-xl p-8 hover-lift ${
-                    index % 2 === 0 ? "md:ml-8" : "md:mr-8"
+                  className={`glass rounded-xl p-8 hover-lift mx-auto w-full max-w-3xl transition-all duration-300 ${
+                    index === activeIndex
+                      ? "ring-2 ring-white/50 shadow-2xl bg-white/5"
+                      : "ring-0 bg-white/0"
                   }`}
                   whileHover={{ scale: 1.02 }}
                 >
