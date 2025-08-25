@@ -45,7 +45,7 @@ const CustomFooter = () => {
   };
 
   return (
-    <footer className="py-16 relative overflow-hidden">
+    <footer className="pb-16 relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-gradient-to-t from-white/5 to-transparent" />
 
@@ -57,57 +57,6 @@ const CustomFooter = () => {
           viewport={{ once: true }}
           className="text-center"
         >
-          {/* Logo and Tagline */}
-          <motion.div variants={itemVariants} className="mb-8">
-            <h3 className="text-3xl font-black mb-4">
-              <span className="gradient-text">GAURAV JANI</span>
-            </h3>
-            <p className="text-white/60 max-w-md mx-auto">
-              Crafting exceptional digital experiences with passion and
-              precision
-            </p>
-          </motion.div>
-
-          {/* Social Links */}
-          <motion.div
-            variants={itemVariants}
-            className="flex justify-center gap-6 mb-8"
-          >
-            {socialLinks.map((social, index) => (
-              <motion.a
-                key={social.label}
-                href={social.href}
-                target={social.href.startsWith("http") ? "_blank" : "_self"}
-                rel={
-                  social.href.startsWith("http") ? "noopener noreferrer" : ""
-                }
-                className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-white hover:bg-white hover:text-black transition-all duration-300 hover-lift"
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                whileTap={{ scale: 0.9 }}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-              >
-                {social.icon}
-              </motion.a>
-            ))}
-          </motion.div>
-
-          {/* Contact Info */}
-          <motion.div variants={itemVariants} className="mb-8">
-            <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8 text-white/60">
-              <a
-                href="mailto:gauravgjani@gmail.com"
-                className="hover:text-white transition-colors duration-300"
-              >
-                gauravgjani@gmail.com
-              </a>
-              <span className="hidden sm:block">•</span>
-              <span>India</span>
-            </div>
-          </motion.div>
-
           {/* Divider */}
           <motion.div
             variants={itemVariants}
