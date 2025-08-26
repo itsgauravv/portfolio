@@ -102,7 +102,7 @@ const Home = () => {
       {!isIntroVisible && (
         <section
           id="home"
-          className="min-h-screen flex items-center justify-center relative overflow-hidden"
+          className="min-h-screen flex items-center justify-center relative overflow-hidden pt-32 sm:pt-0"
         >
           {/* Animated background elements */}
           <div className="absolute inset-0 overflow-hidden">
@@ -127,7 +127,7 @@ const Home = () => {
           </div>
 
           <div className="container relative z-10">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-12 items-center">
               {/* Left Column - Text Content */}
               <motion.div
                 initial={{ opacity: 0, x: -100 }}
@@ -135,7 +135,7 @@ const Home = () => {
                 transition={{ duration: 1, delay: 0.2 }}
                 className="space-y-8"
               >
-                <div className="space-y-4">
+                <div className="lg:space-y-4">
                   <motion.p
                     className="text-lg font-light text-white/80 uppercase tracking-widest"
                     initial={{ opacity: 0 }}
@@ -186,34 +186,20 @@ const Home = () => {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 1 }}
                 >
-                  Crafting exceptional digital experiences with clean code and
-                  creative design. Passionate about building scalable,
-                  user-centric web applications that make a difference.
+                  {`I'm on a journey that usually involves writing threatening comments to a rogue <div> and apologising to my laptop for what I'm about to put it through.`}
                 </motion.p>
 
                 <motion.div
-                  className="flex flex-wrap gap-4"
+                  className="flex gap-4 w-full"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 1.2 }}
                 >
                   <motion.a
-                    href="https://github.com/itsgauravv"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group flex items-center gap-2 px-6 py-3 border border-white/20 rounded-full hover:bg-white hover:text-black transition-all duration-300 hover-lift"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <FaGithub className="text-xl" />
-                    <span>GitHub</span>
-                  </motion.a>
-
-                  <motion.a
                     href="https://linkedin.com/in/itsgauravvv"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex items-center gap-2 px-6 py-3 border border-white/20 rounded-full hover:bg-white hover:text-black transition-all duration-300 hover-lift"
+                    className="group flex items-center flex-1 justify-center gap-2 px-6 py-3 border border-white/20 rounded-full hover:bg-white hover:text-black transition-all duration-300 hover-lift"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
@@ -223,7 +209,7 @@ const Home = () => {
 
                   <motion.button
                     onClick={() => window.open("/Gaurav_Jani_Resume.pdf")}
-                    className="group flex items-center gap-2 px-6 py-3 bg-white text-black rounded-full hover:bg-white/90 transition-all duration-300 hover-lift"
+                    className="group flex items-center flex-1 justify-center gap-2 px-6 py-3 bg-white text-black rounded-full hover:bg-white/90 transition-all duration-300 hover-lift"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
@@ -243,7 +229,7 @@ const Home = () => {
                 <div className="relative">
                   {/* Main geometric shape */}
                   <motion.div
-                    className="w-80 h-80 relative"
+                    className="w-60 h-60 lg:w-80 lg:h-80 relative"
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.3 }}
                   >
@@ -317,7 +303,7 @@ const Home = () => {
           {/* Scroll indicator */}
           <motion.button
             onClick={scrollToNext}
-            className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 text-white/60 hover:text-white transition-colors duration-300"
+            className="absolute bottom-8 left-1/2 transform -translate-x-1/2 hidden lg:flex flex-col items-center gap-2 text-white/60 hover:text-white transition-colors duration-300"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 2 }}

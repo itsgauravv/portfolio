@@ -79,7 +79,7 @@ const ProjectSection = () => {
   };
 
   return (
-    <section id="projects" className="py-20">
+    <section id="projects" className="lg:py-20">
       <div className="container">
         {/* Section Header */}
         <motion.div
@@ -93,7 +93,7 @@ const ProjectSection = () => {
             <span className="gradient-text">Projects</span>
           </h2>
           <p className="text-xl text-white/60 max-w-2xl mx-auto">
-            Showcasing my finest creations and innovative solutions
+            My so-called 'finest creations'
           </p>
         </motion.div>
 

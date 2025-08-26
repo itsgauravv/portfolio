@@ -221,7 +221,7 @@ const TechStackSection = () => {
   };
 
   return (
-    <section id="tech-stack" className="py-20">
+    <section id="tech-stack" className="mt-20 lg:mt-0 py-20">
       <div className="container">
         {/* Section Header */}
         <motion.div
@@ -235,8 +235,7 @@ const TechStackSection = () => {
             <span className="gradient-text">Tech Stack</span>
           </h2>
           <p className="text-xl text-white/60 max-w-2xl mx-auto">
-            My arsenal of technologies and tools for building exceptional
-            digital experiences
+            The stuff I use to make the internet less broken.
           </p>
         </motion.div>
 
