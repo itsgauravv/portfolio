@@ -133,7 +133,7 @@ export default function ExperienceSection() {
             <span className="gradient-text">Experience</span>
           </h2>
           <p className="text-xl text-white/60 max-w-2xl mx-auto">
-            My professional journey and the impact I&apos;ve made along the way
+            My Professional Journey
           </p>
         </motion.div>
 
@@ -215,7 +215,7 @@ export default function ExperienceSection() {
               </div>
 
               {/* Content */}
-              <div className="flex flex-col items-center gap-8">
+              <div className="flex flex-col items-center gap-8 pt-10">
                 {/* Content Card */}
                 <motion.div
                   className={`glass rounded-xl p-8 hover-lift mx-auto w-full max-w-3xl transition-all duration-300 ${
@@ -239,7 +239,7 @@ export default function ExperienceSection() {
                         <h3 className="text-2xl font-bold text-white">
                           {experience.title}
                         </h3>
-                        <span className="px-3 py-1 bg-white/10 rounded-full text-xs font-medium text-white/80">
+                        <span className="hidden lg:flex px-3 py-1 bg-white/10 rounded-full text-xs font-medium text-white/80">
                           {experience.type}
                         </span>
                       </div>

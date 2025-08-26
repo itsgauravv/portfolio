@@ -65,16 +65,19 @@ const CustomFooter = () => {
 
           {/* Copyright */}
           <motion.div variants={itemVariants} className="text-white/60">
-            <p className="mb-2">
-              Designed and developed with{" "}
-              <motion.span
-                className="inline-block text-red-400"
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 1, repeat: Infinity }}
-              >
-                <FaHeart />
-              </motion.span>{" "}
-              by <span className="text-white font-semibold">Gaurav Jani</span>
+            <p className="mb-2 flex flex-col">
+              <p>
+                Designed and developed with{" "}
+                <motion.span
+                  className="inline-block text-red-400"
+                  animate={{ scale: [1, 1.2, 1] }}
+                  transition={{ duration: 1, repeat: Infinity }}
+                >
+                  <FaHeart />
+                </motion.span>{" "}
+                by
+              </p>{" "}
+              <span className="text-white font-semibold">Gaurav Jani</span>
             </p>
             <p>© {currentYear} All rights reserved.</p>
           </motion.div>

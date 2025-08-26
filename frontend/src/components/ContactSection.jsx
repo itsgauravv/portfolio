@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
 
@@ -24,27 +24,6 @@ const ContactSection = () => {
     },
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-      },
-    },
-  };
-
   return (
     <section id="contact" className="py-20">
       <div className="container">
@@ -66,7 +45,7 @@ const ContactSection = () => {
         </motion.div>
 
         {/* Contact Information */}
-        <motion.div className="flex items-center gap-12 w-full justify-center">
+        <motion.div className="flex flex-col lg:flex-row lg:items-center gap-12 w-full justify-center">
           {contactInfo.map((info) => (
             <motion.div
               key={info.title}
