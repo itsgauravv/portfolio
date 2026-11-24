@@ -1126,6 +1126,45 @@
 
   console.log('%c Gaurav Jani ', 'font: 700 14px system-ui; color: #fff; background: #0E0E10; padding: 6px 10px; border-radius: 6px;');
   console.log('You opened devtools on a portfolio. We should talk: gauravgjani@gmail.com');
+
+  /* =========================================================
+     SMOOTH SCROLL: wheel and trackpad scrolling glides to a stop
+     instead of halting the moment the input ends. Touch is left native.
+     ========================================================= */
+  (() => {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const TAU = 105;                       // ms: lower = snappier, higher = floatier
+    const stops = [];
+    ['#s-about', '#s-case', '#s-writing', '#s-post', '#s-inquire'].forEach(sel => {
+      const el = $(sel); if (!el) return;
+      let target = 0, pos = 0, raf = 0, last = 0;
+      const max = () => Math.max(0, el.scrollHeight - el.clientHeight);
+      const stop = () => { if (raf) cancelAnimationFrame(raf); raf = 0; pos = target = el.scrollTop; };
+      function tick(t) {
+        const dt = Math.min(48, t - (last || t - 16)); last = t;
+        const diff = target - pos;
+        if (Math.abs(diff) < 0.35) { pos = target; el.scrollTop = pos; raf = 0; last = 0; return; }
+        pos += diff * (1 - Math.exp(-dt / TAU));
+        el.scrollTop = pos;
+        raf = requestAnimationFrame(tick);
+      }
+      el.addEventListener('wheel', e => {
+        if (e.defaultPrevented || e.ctrlKey || max() <= 0) return;
+        let dy = e.deltaY;
+        if (Math.abs(e.deltaX) > Math.abs(dy)) return;
+        if (e.deltaMode === 1) dy *= 16; else if (e.deltaMode === 2) dy *= el.clientHeight;
+        e.preventDefault();
+        if (!raf) pos = target = el.scrollTop;
+        target = Math.min(max(), Math.max(0, target + dy));
+        if (!raf) { last = 0; raf = requestAnimationFrame(tick); }
+      }, { passive: false });
+      // anything else that moves the page (keyboard, scrollbar drag, route changes) wins
+      el.addEventListener('scroll', () => { if (!raf) pos = target = el.scrollTop; }, { passive: true });
+      ['keydown', 'pointerdown'].forEach(ev => el.addEventListener(ev, stop, { passive: true }));
+      stops.push(stop);
+    });
+    addEventListener('hashchange', () => stops.forEach(f => f()));
+  })();
 })();
 </script>
 </body>
