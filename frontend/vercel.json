@@ -2,5 +2,27 @@
   "framework": null,
   "installCommand": "",
   "buildCommand": "",
-  "outputDirectory": "."
+  "outputDirectory": ".",
+  "redirects": [
+    {
+      "source": "/blog",
+      "destination": "/#writing",
+      "permanent": false
+    },
+    {
+      "source": "/blog/",
+      "destination": "/#writing",
+      "permanent": false
+    },
+    {
+      "source": "/blog/:slug",
+      "destination": "/#writing/:slug",
+      "permanent": false
+    },
+    {
+      "source": "/blog/:slug/",
+      "destination": "/#writing/:slug",
+      "permanent": false
+    }
+  ]
 }
