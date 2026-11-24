@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A model that reads well is not one you can trust to act | Gaurav Jani</title>
+<meta name="description" content="Why I keep the model on reading documents and put the decisions in plain code.">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="canonical" href="https://gauravjani.com/blog/reading-is-not-deciding/">
+<meta property="og:url" content="https://gauravjani.com/blog/reading-is-not-deciding/">
+<meta property="og:title" content="A model that reads well is not one you can trust to act | Gaurav Jani">
+<meta property="og:description" content="Why I keep the model on reading documents and put the decisions in plain code.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://gauravjani.com/blog/img/reading-is-not-deciding.png">
+<link rel="preload" href="/inter.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/blog/blog.css">
+</head>
+<body>
+<div class="grid" aria-hidden="true"></div>
+<header class="top"><a class="pill" href="/">Gaurav Jani</a><a class="pill dark" href="/#say-hi">Say hi</a></header>
+<main class="wrap"><article>
+<div class="kicker">November 2026 &middot; 2 min read</div>
+<h1>A model that reads well is not one you can trust to act</h1>
+<p class="lede">Why I keep the model on reading documents and put the decisions in plain code.</p>
+<p>When I started using language models on business documents, I assumed the hard part would be getting the model to read them. It was the opposite. Models read invoices, forms and contracts well now. The hard part is deciding what happens next.</p>
+<h2>Two jobs hiding in one prompt</h2>
+<p>A prompt like &quot;read this invoice and approve it if it looks fine&quot; asks for two different things. One is extraction: what does the document say? The other is judgment: is it safe to act on it?</p>
+<p>If you mix them, you cannot tell which one failed. When something goes wrong, you do not know if the model misread a number or made a bad call about a number it read correctly.</p>
+<figure><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 330" role="img" aria-label="The model reads the document, plain code checks it, then it either goes through or goes to a person" font-family="Inter, system-ui, -apple-system, Segoe UI, sans-serif"><defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#0E0E10" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker></defs><rect width="960" height="330" fill="#fff"/><rect x="30" y="130" width="150" height="100" rx="16" fill="#fff" stroke="#E4E5EA" stroke-width="1.5"/><text x="105" y="175" font-size="17" font-weight="600" fill="#0E0E10" text-anchor="middle">Document</text><text x="105" y="200" font-size="12" font-weight="400" fill="#5B5C63" text-anchor="middle">invoice, form, contract</text><line x1="184" y1="180" x2="236" y2="180" stroke="#0E0E10" stroke-width="1.6" marker-end="url(#ah)"/><rect x="240" y="120" width="210" height="120" rx="16" fill="#DCE3FF"/><text x="345" y="170" font-size="17" font-weight="600" fill="#0E0E10" text-anchor="middle">The model reads</text><text x="345" y="196" font-size="13" font-weight="400" fill="#5B5C63" text-anchor="middle">fields + confidence</text><text x="345" y="262" font-size="12" font-weight="400" fill="#5B5C63" text-anchor="middle">Its only job: say what is written</text><line x1="454" y1="180" x2="506" y2="180" stroke="#0E0E10" stroke-width="1.6" marker-end="url(#ah)"/><rect x="510" y="120" width="210" height="120" rx="16" fill="#0E0E10"/><text x="615" y="170" font-size="17" font-weight="600" fill="#fff" text-anchor="middle">Checks in plain code</text><text x="615" y="196" font-size="13" font-weight="400" fill="#C9CAD0" text-anchor="middle">totals add up, IDs exist,</text><text x="615" y="214" font-size="13" font-weight="400" fill="#C9CAD0" text-anchor="middle">no duplicate</text><text x="615" y="262" font-size="12" font-weight="400" fill="#5B5C63" text-anchor="middle">Decides whether it is safe to act</text><line x1="724" y1="160" x2="776" y2="110" stroke="#0E0E10" stroke-width="1.6" marker-end="url(#ah)"/><line x1="724" y1="200" x2="776" y2="250" stroke="#0E0E10" stroke-width="1.6" marker-end="url(#ah)"/><rect x="780" y="70" width="150" height="80" rx="16" fill="#fff" stroke="#3B5BFF" stroke-width="1.5"/><text x="855" y="106" font-size="16" font-weight="600" fill="#0E0E10" text-anchor="middle">Goes through</text><text x="855" y="128" font-size="13" font-weight="400" fill="#5B5C63" text-anchor="middle">on its own</text><rect x="780" y="210" width="150" height="80" rx="16" fill="#fff" stroke="#E4E5EA" stroke-width="1.5"/><text x="855" y="246" font-size="16" font-weight="600" fill="#0E0E10" text-anchor="middle">Goes to a person</text><text x="855" y="268" font-size="13" font-weight="400" fill="#5B5C63" text-anchor="middle">with the reason</text></svg></figure>
+<h2>Keep the model on reading</h2>
+<p>I let the model do what it is good at, which is turning messy documents into fields. Then plain code does the judging. Do the totals add up? Does this ID exist in our system? Have we seen this exact document before? Is the tax in the range we expect?</p>
+<p>These checks are boring on purpose. You can test them, you can read them, and you can explain them to the person in finance or operations who owns the outcome. &quot;The model felt confident&quot; is not an explanation anyone can sign off on.</p>
+<h2>Use confidence to route, not to decide</h2>
+<p>Models can report how sure they are about each field. That number is useful, but it is not the truth. I use it for routing: if the checks pass and confidence is high, the document goes through. If not, it goes to a person.</p>
+<p>The model can still help the person. A short note on why something was flagged, in plain words, saves them from hunting through the document.</p>
+<h2>Start with the checks</h2>
+<p>A practical way to begin: write down what a careful human clerk checks before they act on this kind of document. That list is your set of checks. Then work backwards and ask what the model has to hand over for each one.</p>
+<p>This also tells you early where the project is risky. If a check needs information the model cannot reliably produce, you find out in week one, not after launch.</p>
+<h2>The bar that matters</h2>
+<p>People ask how often the model is right. I care more about a different question: when it is wrong, does the system notice? A model that is right most of the time and a system that catches the rest is something you can run without watching it all day.</p>
+<div class="end">Written by Gaurav Jani. If this is useful or you disagree, <a href="/#say-hi">say hi</a>. More writing is on the <a href="/blog/">writing page</a>.</div>
+</article>
+<div class="more"><a class="card" href="/blog/what-a-forward-deployed-engineer-does/"><h3>What a forward deployed engineer actually does in a week</h3><p>My version of the job: sitting between the customer and the code, and staying after launch.</p></a><a class="card" href="/blog/before-ai-runs-on-its-own/"><h3>Five questions I ask before an AI system runs without a human</h3><p>A short checklist for deciding whether an AI workflow is ready to run on its own.</p></a><a class="card" href="/blog/rebuilding-my-portfolio-resume-linkedin/"><h3>What I changed when I rebuilt my portfolio, resume and LinkedIn</h3><p>Why I made all three tell the same story, and the small decisions behind each one.</p></a></div></main>
+</body></html>
